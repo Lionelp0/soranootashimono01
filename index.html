@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APPFLIX</title>
+<link crossorigin='anonymous' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css' integrity='sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==' referrerpolicy='no-referrer' rel='stylesheet'/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+
+<style>@import url(https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;600&display=swap);*{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}*{list-style:none;margin:0;padding:0;box-sizing:border-box;color:#fff;font-family:"Source Sans Pro",sans-serif;text-decoration:none}:root{--main:#e21221}body{background:#181a20;font-family:"Source Sans Pro",sans-serif}.app-header{height:33vh;position:relative;display:flex;justify-content:center;align-items:flex-end;padding:15px}.app-header__bg{position:absolute;top:0;left:0;display:block;width:100%;height:100%;background:#000;z-index:-1;opacity:.9}.app-info{padding:20px}.app-info__mini-data{margin:10px 0}.btn-info i{color:var(--main);margin-right:7px}.btn-info{color:var(--main);display:inline-block;padding:5px 10px;margin-right:10px;font-weight:600;border:2px solid var(--main);border-radius:8px}.genres{margin:20px 0}.cast{margin:20px 0}.cast-min__container{aspect-ratio:1 / 1;background:#111215;border-radius:100%;overflow:hidden}.cast__min{width:100%;aspect-ratio:1 / 1;object-fit:cover}.swiper-slide{display:grid;grid-gap:15px;grid-template-columns:40% 60%;align-items:flex-start}.lista-episodios{padding:20px}.select-season{display:flex;align-items:center;margin-bottom:30px;position:relative;justify-content:space-between}.select-season select{background:rgb(48,48,48);outline:none;border:none;padding:10px 20px;font-size:20px;font-weight:600;border-radius:5px;border-right:20px solid transparent}.caps-grid{opacity:0;transition:opacity .4s ease;overflow:hidden}.caps-grid.animation{opacity:1;animation:fade 1s ease}@keyframes fade{0%{opacity:0}100%{opacity:1}}.hide{display:none}#temps{position:relative}.episode{display:grid;grid-gap:20px;grid-template-columns:.4fr .6fr}.episode__img{aspect-ratio:3 / 2;background:#111215;border-radius:4px;overflow:hidden}.episode__img img{width:100%;aspect-ratio:3 / 2;object-fit:cover}.episode__info__title{font-size:20px;margin-bottom:3px}.episode__info__duration{opacity:.7;font-weight:600}.caps-grid li{margin-bottom:20px}@media screen and (min-width:768px){.caps-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-gap:20px}.episode{display:flex;flex-direction:column;text-align:center}.hide{display:none}}
+.iframe-box{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:100%;height:100%;z-index:9999;background:rgb(0,0,0,.9);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;display:none}#cerrar{cursor:pointer}.fa-xmark{font-size:50px}#lightbox{aspect-ratio:16 / 9;width:100%;display:flex;flex-direction:column;align-items:flex-end}#lightbox-content{position:relative;overflow:hidden;width:100%;padding-top:36.25%;aspect-ratio:16 / 9}.responsive-iframe{position:absolute;top:0;left:0;bottom:0;right:0;width:100%;aspect-ratio:16 / 9;z-index:9999}@media screen and (min-width:1000px){#lightbox{width:80%}}*{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}</style>
+</head>
+<body>
+
+<div class="app-header">
+<div class="app-header__bg" style="background: url('https://image.tmdb.org/t/p/w500//aCfyCPPoVYQM1hdDUaLgPgHIb2u.jpg') no-repeat center center / cover;"></div>
+</div>
+
+<div class="app-info"><h1 class="app__info__title">Sora no Otoshimono</h1><ul class="app-info__mini-data"><li class="rate btn-info"><i class="fa-solid fa-star"></i>7.9</li><li class="year btn-info">2009</li><li class="btn-info">2 Temporadas</li></ul><p class="genres">Géneros: Comedia, Drama, Romance, Ecchi </p><p class="sinopsis">La trama gira en torno a un chico en la ciudad de Soramani, llamado Tomoki Sakurai, un estudiante que trata de llevar su vida en paz y sin ninguna preocupación, pero siempre tiene el mismo sueño, que al despertarse le hace llorar. Su amiga Sohara le dice que vaya a ver a Sugata-Sempai, ya que sabe muchas cosas; y este personaje le dice que tiene relación con un extraño agujero negro del cielo que cree que puede ser nuevo mundo. Así que un día es invitado por Sugata-Sempai para ir a la medianoche a presenciar un extraño objeto que se ve en el cielo de su ciudad. Tomoki va solo y como el extraño objeto se acerca, Sugata llama para advertirle que se aleje. Poco después tras una lluvia de meteoritos, Tomoki descubre a una chica con aspecto de angel. Tras asimilar la situación Tomoki decide huir, pero al ver la magnitud de los meteoritos decide regresar y rescatar a la chica, quien resulta ser un angeloid.</p>
+
+</div></div>
+
+<div class="lista-episodios">
+<div class="select-season">
+<h2>Episodios</h2>
+<select name="" id="select-season">
+<option value="1">Temporada 1</option>
+<option value="2">Temporada 2</option>
+<option value="3">Película 1</option>
+<option value="4">Película 2</option>
+
+</select>
+</div>
+
+<!--================================== SEASONS SECTION ==================================-->
+
+<div id="temps">
+
+<ul class="caps-grid animation" id="season-1">
+
+<li>
+<a href="https://fft567646.blogspot.com/p/codepen-netflix-skin-for-jwplayer-8.html" class="episode" data-url="">
+<div class="episode__img">
+<img src="https://image.tmdb.org/t/p/w500//sMNXtQLgW43gXbNbyLH4ykYLSgN.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">1. Un Héroe “Desnudo” se Levanta</h4>
+<div class="episode__info__duration">25m</div>
+</div>
+</a>
+</li>
+
+<li>
+<a href="#!" class="episode" data-url="https://www.youtube.com/embed/yBm4K00SMEk">
+<div class="episode__img">
+<img src="https://image.tmdb.org/t/p/w500//tXLyqSPoq1UnXkPHKYU5wjJbaXT.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">2. Romance Celestial</h4>
+<div class="episode__info__duration">25m</div>
+</div>
+</a>
+</li>
+
+<li>
+<a href="#!" class="episode" data-url="https://www.youtube.com/embed/yBm4K00SMEk">
+<div class="episode__img">
+<img src="https://image.tmdb.org/t/p/w500//AgtK02NmClX2fq4pVKVHeS68755.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">3. La Primera Orden de un Angeloid</h4>
+<div class="episode__info__duration">25m</div>
+</div>
+</a>
+</li>
+
+<li>
+<a href="#!" class="episode" data-url="https://www.youtube.com/embed/yBm4K00SMEk">
+<div class="episode__img">
+<img src="https://image.tmdb.org/t/p/w500//qempW01Eer94tlJlGzK3yPQSht2.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">4. Amor y un Triángulo – Otra Vez</h4>
+<div class="episode__info__duration">25m</div>
+</div>
+</a>
+</li>
+
+<li>
+<a href="#!" class="episode" data-url="https://www.youtube.com/embed/yBm4K00SMEk">
+<div class="episode__img">
+<img src="https://image.tmdb.org/t/p/w500//t031YyDPRB9DeoTwBkVvO2EfjeB.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">5. Una Noche Calurosa con un Mandamá</h4>
+<div class="episode__info__duration">25m</div>
+</div>
+</a>
+</li>
+
+<li>
+<a href="#!" class="episode" data-url="https://www.youtube.com/embed/yBm4K00SMEk">
+<div class="episode__img">
+<img src="https://image.tmdb.org/t/p/w500//wagclxXcyj0F1Ug0kQMmzKT0nF1.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">6. Tropas de Traje de Baño GO! GO! GO!</h4>
+<div class="episode__info__duration">25m</div>
+</div>
+</a>
+</li>
+
+<li>
+<a href="#!" class="episode" data-url="https://www.youtube.com/embed/yBm4K00SMEk">
+<div class="episode__img">
+<img src="https://image.tmdb.org/t/p/w500//c64kKe8FDyjlwSYsy1JNlEwJnjE.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">7. Las Nuevas Chicas Lindas</h4>
+<div class="episode__info__duration">25m</div>
+</div>
+</a>
+</li>
+
+<li>
+<a href="#!" class="episode" data-url="https://www.youtube.com/embed/yBm4K00SMEk">
+<div class="episode__img">
+<img src="https://image.tmdb.org/t/p/w500//45GctFVwlNjskhIauyhlUYA0CVr.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">8. ¿Para Quien es el Festival de Tiros?</h4>
+<div class="episode__info__duration">25m</div>
+</div>
+</a>
+</li>
+
+<li>
+<a href="#!" class="episode" data-url="https://www.youtube.com/embed/yBm4K00SMEk">
+<div class="episode__img">
+<img src="https://image.tmdb.org/t/p/w500//gQNGeRjcZJirhGQpOTBVN9HheJX.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">9. La Historia que Comenzó con una Mentira</h4>
+<div class="episode__info__duration">25m</div>
+</div>
+</a>
+</li>
+
+<li>
+<a href="#!" class="episode" data-url="https://www.youtube.com/embed/yBm4K00SMEk">
+<div class="episode__img">
+<img src="https://image.tmdb.org/t/p/w500//7GXiOxmpFqQpAo8e90WtXzhMl89.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">10. Donde las Palabras de los Angeles Van</h4>
+<div class="episode__info__duration">25m</div>
+</div>
+</a>
+</li>
+
+<li>
+<a href="#!" class="episode" data-url="https://www.youtube.com/embed/yBm4K00SMEk">
+<div class="episode__img">
+<img src="https://image.tmdb.org/t/p/w500//cq8UguZ1kjZNIHErwOBiSgjsTnO.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">11. ¡Vamos! Mi Paraíso</h4>
+<div class="episode__info__duration">25m</div>
+</div>
+</a>
+</li>
+
+<li>
+<a href="#!" class="episode" data-url="https://www.youtube.com/embed/yBm4K00SMEk">
+<div class="episode__img">
+<img src="https://image.tmdb.org/t/p/w500//qQIckB3O3Ww8JmuiKcw5FT4Is8M.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">12. La cadena que no permite el escape</h4>
+<div class="episode__info__duration">25m</div>
+</div>
+</a>
+</li>
+
+<li>
+<a href="#!" class="episode" data-url="https://www.youtube.com/embed/yBm4K00SMEk">
+<div class="episode__img">
+<img src="https://image.tmdb.org/t/p/w500//iZhoPBZK1FeEsGoOwq8VgWStm9N.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">13. Propiedad perdida del cielo (Cut`s Director)</h4>
+<div class="episode__info__duration">25m</div>
+</div>
+</a>
+</li>
+
+</ul>
+
+
+
+
+<ul class="caps-grid hide" id="season-2">
+
+<li>
+<a href="#!" class="episode" data-url="https://www.youtube.com/embed/yBm4K00SMEk">
+<div class="episode__img">
+<img src="https://image.tmdb.org/t/p/w500//5Mg8t1btlAm9GvzTua9jlsOT4MF.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">1. Episodio 1</h4>
+<div class="episode__info__duration">25m</div>
+</div>
+</a>
+</li>
+
+<li>
+<a href="#!" class="episode" data-url="https://www.youtube.com/embed/yBm4K00SMEk">
+<div class="episode__img">
+<img src="https://image.tmdb.org/t/p/w500//oalgkPDZCZxxcWNEtnuPcHBRVJQ.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">2. Episodio 2</h4>
+<div class="episode__info__duration">25m</div>
+</div>
+</a>
+</li>
+
+<li>
+<a href="#!" class="episode" data-url="https://www.youtube.com/embed/yBm4K00SMEk">
+<div class="episode__img">
+<img src="https://image.tmdb.org/t/p/w500//xc9qOBEn4zTHRVstGwgETWQoCY5.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">3. Episodio 3</h4>
+<div class="episode__info__duration">25m</div>
+</div>
+</a>
+</li>
+
+<li>
+<a href="#!" class="episode" data-url="https://www.youtube.com/embed/yBm4K00SMEk">
+<div class="episode__img">
+<img src="https://image.tmdb.org/t/p/w500//dAwLRboKiV4adAFBO0F9baTVG6a.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">4. Episodio 4</h4>
+<div class="episode__info__duration">25m</div>
+</div>
+</a>
+</li>
+
+<li>
+<a href="#!" class="episode" data-url="https://www.youtube.com/embed/yBm4K00SMEk">
+<div class="episode__img">
+<img src="https://image.tmdb.org/t/p/w500//nsJwMH0fw269425cpIyzZZmYbRN.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">5. Episodio 5</h4>
+<div class="episode__info__duration">25m</div>
+</div>
+</a>
+</li>
+
+<li>
+<a href="#!" class="episode" data-url="https://www.youtube.com/embed/yBm4K00SMEk">
+<div class="episode__img">
+<img src="https://image.tmdb.org/t/p/w500//jjVnd3ngBkDrDPSzvLAo1LoTmR7.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">6. Episodio 6</h4>
+<div class="episode__info__duration">25m</div>
+</div>
+</a>
+</li>
+
+<li>
+<a href="#!" class="episode" data-url="https://www.youtube.com/embed/yBm4K00SMEk">
+<div class="episode__img">
+<img src="https://image.tmdb.org/t/p/w500//cJ9WDtEjHOrvsx0JntZ6mKdpcbj.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">7. Episodio 7</h4>
+<div class="episode__info__duration">25m</div>
+</div>
+</a>
+</li>
+
+<li>
+<a href="#!" class="episode" data-url="https://www.youtube.com/embed/yBm4K00SMEk">
+<div class="episode__img">
+<img src="https://image.tmdb.org/t/p/w500//c9hPTTPuh1fNN5azQ4kPq6QDpbd.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">8. Episodio 8</h4>
+<div class="episode__info__duration">25m</div>
+</div>
+</a>
+</li>
+
+<li>
+<a href="#!" class="episode" data-url="https://www.youtube.com/embed/yBm4K00SMEk">
+<div class="episode__img">
+<img src="https://image.tmdb.org/t/p/w500//fXdEBoYMAyEsGBULJ4DpPYbX4i9.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">9. Episodio 9</h4>
+<div class="episode__info__duration">25m</div>
+</div>
+</a>
+</li>
+
+<li>
+<a href="#!" class="episode" data-url="https://www.youtube.com/embed/yBm4K00SMEk">
+<div class="episode__img">
+<img src="https://image.tmdb.org/t/p/w500//svZUxDxeZprUJQH4q02LlZlhBpb.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">10. Episodio 10</h4>
+<div class="episode__info__duration">25m</div>
+</div>
+</a>
+</li>
+
+<li>
+<a href="#!" class="episode" data-url="https://www.youtube.com/embed/yBm4K00SMEk">
+<div class="episode__img">
+<img src="https://image.tmdb.org/t/p/w500//leIQLs4aAE5xg2TZSZ2EMqiyhaJ.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">11. Episodio 11</h4>
+<div class="episode__info__duration">25m</div>
+</div>
+</a>
+</li>
+
+<li>
+<a href="#!" class="episode" data-url="https://www.youtube.com/embed/yBm4K00SMEk">
+<div class="episode__img">
+<img src="https://image.tmdb.org/t/p/w500//fN86DbHUooE9J5ltrtPnF2MsNne.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">12. Episodio 12</h4>
+<div class="episode__info__duration">25m</div>
+</div>
+</a>
+</li>
+
+</ul>
+
+
+<ul class="caps-grid hide" id="season-3">
+
+<li>
+<a href="#!" class="episode" data-url="https://www.youtube.com/embed/yBm4K00SMEk">
+<div class="episode__img">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJojoRFrAtke4R45-nda-xqrl_wFz0jd3Ge5xK79nsETYA4nwA0DXBQevvXJQ8407WFfx_V6atV0imWZHhLmN2nZQI9ZYuiRC54a2JYLAobecAkJpzJ-dUCNk1AIndxvrjTY1Lnr8ZmDn1XpRpioMWXp5UOb0Sz4QXoNCCHrKDk5D-LRUIaaHrZdrXaw/s1024/82dadf3df7e5c6a926d4e0b01e157a3fe99faff2_hq.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">Sora no Otoshimono: Tokei-jikake no Angeloid</h4>
+<div class="episode__info__duration">1h:37m</div>
+</div>
+</a>
+</li>
+
+</ul>
+
+
+<ul class="caps-grid hide" id="season-4">
+
+<li>
+<a href="#!" class="episode" data-url="https://www.youtube.com/embed/yBm4K00SMEk">
+<div class="episode__img">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi-N3HD-8qG0ClRAO_gsAp9Rnku4Djk0YJV8T_O1CwtrJ372p5DuDdqtN3sBM18iDE_1qa5LKVKHGZUL183-Q7PVWSbv6BLJMFmlFiIheZIBzl0LHRSXQKrFxV5r-fBJBMOrGUbdRs5zrGhPuT0mbYFh31ePgW_SYnL9RLYFK6BmdNSfc7HstzgDZQkHg/s656/maxresdefault-4.jpg" onerror="this.src='https://i.ibb.co/kxfbQ6p/default.jpg';">
+</div>
+<div class="epsiode__info">
+<h4 class="episode__info__title">Sora no Otoshimono Final: Eternal My Master</h4>
+<div class="episode__info__duration">49m</div>
+</div>
+</a>
+</li>
+
+</ul>
+
+
+
+
+</div>
+
+</div>
+
+
+
+<!-- SLIDERS CONFIG-->
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script>
+var swiper=new Swiper(".mySwiper",{slidesPerView:2,spaceBetween:40,freeMode:!0,breakpoints:{640:{slidesPerView:3},768:{slidesPerView:4,spaceBetween:15},1024:{slidesPerView:5}}})
+
+</script>
+
+<!-- TEMPORADAS -->
+<script>
+const selectorTempos=document.getElementById("select-season"),temps=document.getElementById("temps");selectorTempos.addEventListener("change",()=>{let b=`season-${selectorTempos.value}`,a=document.getElementById(`${b}`);temps.querySelectorAll("ul").forEach(a=>{a.classList.add("hide"),a.classList.remove("animation")}),a.classList.remove("hide"),a.classList.add("animation")})
+let cerrar=document.getElementById("cerrar"),iframeBox=document.getElementById("iframe-box"),temporadas=document.getElementById("temps"),iframe=document.getElementById("video");cerrar.addEventListener("click",()=>{iframe.removeAttribute("src"),iframeBox.style.display="none"});let eachEpisode=temporadas.querySelectorAll("li");eachEpisode.forEach(a=>{a.addEventListener("click",b=>{b.preventDefault(),iframeBox.style.display="flex";let c=a.querySelector("a").getAttribute("data-url");iframe.setAttribute("src",c)})})
+
+</script>
+</body>
+</html>
